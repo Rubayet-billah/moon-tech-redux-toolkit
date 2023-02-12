@@ -1,15 +1,22 @@
 import React from "react";
-import { BiListPlus } from "react-icons/bi";
+import { BiListPlus, BiTrashAlt } from "react-icons/bi";
 import { useDispatch } from "react-redux";
-import { addTocart } from "../features/cart/cartSlice";
+import { useLocation } from "react-router-dom";
+import { addTocart, removeFromCart } from "../features/cart/cartSlice";
 
 const ProductCard = ({ product }) => {
   const dispatch = useDispatch();
+  const location = useLocation();
   return (
     <div
-      className="shadow-lg rounded-3xl border  p-3 flex flex-col text-indigo-900"
+      className="relative shadow-lg rounded-3xl border  p-3 flex flex-col text-indigo-900"
       key={product._id}
     >
+      {location?.pathname?.includes("cart") && (
+        <div className="absolute top-4 right-4 h-8 w-8 rounded-full bg-indigo-500 grid place-items-center text-lg font-bold text-white">
+          {product.quantity}
+        </div>
+      )}
       <div className="h-52 w-52 mx-auto">
         <img src={product.image} alt={product.model} />
       </div>
@@ -34,6 +41,13 @@ const ProductCard = ({ product }) => {
           className="bg-indigo-500  py-1 px-2 rounded-full"
         >
           <BiListPlus className="text-white" />
+        </button>
+        <button
+          onClick={() => dispatch(removeFromCart(product))}
+          title="Add to wishlist"
+          className="bg-red-400  py-1 px-2 rounded-full"
+        >
+          <BiTrashAlt className="text-white" />
         </button>
       </div>
     </div>
