@@ -5,19 +5,13 @@ import { toggle, toggleBrand } from "../features/filter/filterSlice";
 import { fetchProducts } from "../features/product/productSlice";
 
 const Home = () => {
-  // const [products, setProducts] = useState([]);
-
-  // const { product, filters } = useSelector((state) => state.filter.filters);
   const { cart, filter, product } = useSelector((state) => state);
   console.log(cart, filter, product);
-  const { brands, stock } = {};
+  const { brands, stock } = { filter };
 
   const dispatch = useDispatch();
 
   useEffect(() => {
-    // fetch("http://localhost:5000/products")
-    //   .then((res) => res.json())
-    //   .then((data) => setProducts(data.data));
     dispatch(fetchProducts());
   }, [dispatch]);
 
