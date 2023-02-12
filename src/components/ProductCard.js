@@ -42,13 +42,15 @@ const ProductCard = ({ product }) => {
         >
           <BiListPlus className="text-white" />
         </button>
-        <button
-          onClick={() => dispatch(removeFromCart(product))}
-          title="Add to wishlist"
-          className="bg-red-400  py-1 px-2 rounded-full"
-        >
-          <BiTrashAlt className="text-white" />
-        </button>
+        {location?.pathname?.includes("cart") && (
+          <button
+            onClick={() => dispatch(removeFromCart(product))}
+            title="Add to wishlist"
+            className="bg-red-400  py-1 px-2 rounded-full"
+          >
+            <BiTrashAlt className="text-white" />
+          </button>
+        )}
       </div>
     </div>
   );
