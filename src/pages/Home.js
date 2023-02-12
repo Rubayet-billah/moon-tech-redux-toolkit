@@ -2,20 +2,24 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import ProductCard from "../components/ProductCard";
 import { toggle, toggleBrand } from "../features/filter/filterSlice";
+import { fetchProducts } from "../features/product/productSlice";
 
 const Home = () => {
-  const [products, setProducts] = useState([]);
+  // const [products, setProducts] = useState([]);
 
-  const filters = useSelector((state) => state.filter.filters);
+  // const { product, filters } = useSelector((state) => state.filter.filters);
+  const { cart, filter, products } = useSelector((state) => state);
+  console.log(cart, filter, products);
   const { brands, stock } = {};
 
   const dispatch = useDispatch();
 
   useEffect(() => {
-    fetch("http://localhost:5000/products")
-      .then((res) => res.json())
-      .then((data) => setProducts(data.data));
-  }, []);
+    // fetch("http://localhost:5000/products")
+    //   .then((res) => res.json())
+    //   .then((data) => setProducts(data.data));
+    dispatch(fetchProducts());
+  }, [dispatch]);
 
   const activeClass = "text-white bg-indigo-500 border-white";
 
