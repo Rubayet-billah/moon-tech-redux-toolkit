@@ -8,8 +8,8 @@ const Home = () => {
   // const [products, setProducts] = useState([]);
 
   // const { product, filters } = useSelector((state) => state.filter.filters);
-  const { cart, filter, products } = useSelector((state) => state);
-  console.log(cart, filter, products);
+  const { cart, filter, product } = useSelector((state) => state);
+  console.log(cart, filter, product);
   const { brands, stock } = {};
 
   const dispatch = useDispatch();
@@ -52,7 +52,7 @@ const Home = () => {
         </button>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 max-w-7xl gap-14 mx-auto my-10">
-        {products?.map((product) => (
+        {product?.products?.map((product) => (
           <ProductCard product={product} />
         ))}
       </div>
