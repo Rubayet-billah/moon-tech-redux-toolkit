@@ -6,7 +6,7 @@ import { fetchProducts } from "../features/product/productSlice";
 
 const Home = () => {
   const { cart, filter, product } = useSelector((state) => state);
-  console.log(cart, filter, product);
+  // console.log(cart, filter, product);
   const { brands, stock } = { filter };
 
   const dispatch = useDispatch();
