@@ -1,5 +1,7 @@
 import axios from "../../API/axios.config";
 
-const data = axios.get();
-
-console.log(data);
+export const getProducts = async () => {
+  const data = await axios.get("/products");
+  console.log(data.data.data);
+  return data.data.data;
+};

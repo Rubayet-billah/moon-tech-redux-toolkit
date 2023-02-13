@@ -1,17 +1,17 @@
 import axios from "axios";
 
-let URL = "http://localhost:5000/products";
+let URL = "http://localhost:5000";
 
 switch (process.env.PRODUCTION) {
   case "PRODUCTION":
-    URL = "http://localhost:5000/products";
+    URL = "http://localhost:5000";
     break;
   case "DEPLOYMENT":
     URL = "https://fnewfnoen.com";
     break;
 
   default:
-    URL = "http://localhost:5000/products";
+    URL = "http://localhost:5000";
     break;
 }
 
