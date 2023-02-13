@@ -2,11 +2,11 @@ import axios from "axios";
 
 let URL = "http://localhost:5000";
 
-switch (process.env.PRODUCTION) {
-  case "PRODUCTION":
+switch (process.env.REACT_APP_DEVELOPMENT) {
+  case "DEVELOPMENT":
     URL = "http://localhost:5000";
     break;
-  case "DEPLOYMENT":
+  case "PRODUCTION":
     URL = "https://fnewfnoen.com";
     break;
 
